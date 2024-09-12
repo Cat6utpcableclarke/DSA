@@ -51,7 +51,7 @@ int main() {
 	printf("\n");
 	
 	printf("difference Set: ");
-	Set dif = differenceSet(b,a);
+	Set dif = differenceSet(a,b);
 	displaySet(dif);
 	printf("\n");
 	
@@ -168,25 +168,18 @@ Set differenceSet(Set a, Set b){
 	
 	Set dif = createSet(max); 
 	 for(i = 0; i<dif.max ;i++){
-	 	if(isElement(a,i) && isElement(b,i)){
-	 		removeElement(&a,i);
+	 	if(isElement(a,i) && !isElement(b,i)){
+	 		addelem(&dif,i);
 		 }
 	 }
 	 
-	 dif = a;
+	 
 	
 	return dif;
 	
 }
 
 Set symmetricDifference( Set a, Set b){
-	
-//	Set c =  differenceSet(a,b);
-//	Set d =  differenceSet(b,a);
-//	
-//	
-//	Set e = unionSet( c, d);
-	
 	return unionSet(differenceSet(a,b),differenceSet(b,a));
 }
 
