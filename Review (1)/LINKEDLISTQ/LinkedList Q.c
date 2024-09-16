@@ -49,42 +49,24 @@ void main(){
    	
 	Queue q = createqueue();
 	Name *list;
+	int i = 0;
 	
 	insertSorted(&q,createStudData(123,"calasd","bdad",'f',"BSIT"));
-		insertSorted(&q,createStudData(123,"calasd","adad",'f',"BSIT"));
-//	enqueue(&q, createStudData(123,"calasd","adad",'f',"BSIT"));
-//	enqueue(&q, createStudData(12123,"clarke","adad",'f',"BSIT"));
-//	enqueue(&q, createStudData(111231,"steven","adad",'m',"BSIT"));
+	insertSorted(&q,createStudData(123,"Jhonny","Nins",'m',"BSIT"));
+	insertSorted(&q,createStudData(123,"Lamar","Kendrick",'f',"BSIT"));
+	insertSorted(&q,createStudData(123,"Mika","Mot",'f',"BSIT"));
+	insertSorted(&q,createStudData(123,"Nega","Chin",'f',"BSIT"));
+
 	DisplayQ(q);
-	printf("---------------------------------------------\n");
+	list = getStudent(q,"BSIT",'f');
 	
-//	enqueue(&q, createStudData(12123,"cl","adad",'f',"BSIT"));
-//	enqueue(&q, createStudData(111231,"st","adad",'m',"BSIT"));
+	while(strcmp(list[i].fname,"\0")!= 0){
+		printf("%s",list[i].fname);
+		i++;
+	}
+	printf("\n---------------------------------------------\n");
 	
-	DisplayQ(q);
-	printf("---------------------------------------------\n");
-	dequeue(&q);
-	DisplayQ(q);
-	printf("---------------------------------------------\n");
-//	enqueue(&q, createStudData(12123,"hehe","adad",'f',"BSIT"));
-//	enqueue(&q, createStudData(111231,"haha","adad",'m',"BSIT"));
-	DisplayQ(q);
-	printf("---------------------------------------------\n");
-//	makeNull(&q);
-//	DisplayQ(q);
-	printf("---------------------------------------------\n");
-
-
-//	char gender = 'm';
-//	char program[] = "BSIT";
-//	list = getStudent(q,program,gender);
-//	int i=0;
-//	
-//	for(i=0;strcmp(list[i].fname,"/0")!=0;i++){
-//		
-//		printf("%s\n",list[i].fname);
-//	}
-
+	
 
 }
 void initQueue(Queue *q){
@@ -129,27 +111,27 @@ bool enqueue(Queue *q, Data d){
     
     if(q->tail == NULL){
 	    q->head = temp;
-	    q->tail = temp;
+	  
     }else{
 	    q->tail->link = temp;
-	    q->tail = temp;
+	    
    	 }
-    
+    	q->tail = temp;
     return true;
     
 }
 bool dequeue(Queue *q){
     
     if(!isEmpty(*q)){
-    NodePtr temp; 
-    temp = q->head;
-    q->head = q->head->link;
-    free(temp);
-    
-    if(q->head == NULL){
-    	q->tail = NULL;
-	}
-    return true;
+	    NodePtr temp; 
+	    temp = q->head;
+	    q->head = q->head->link;
+	    free(temp);
+	    
+	    if(q->head == NULL){
+	    	q->tail = NULL;
+		}
+	    return true;
     }
     return false;
     
@@ -201,8 +183,8 @@ Name* getStudent(Queue q, char program[6], char sex){
 	
 //		printf("%d",q.head->elem.StudId);
 	
-	strcpy(list[i++].fname,"/0");
-	strcpy(list[i].lname,"/0");
+	strcpy(list[i++].fname,"\0");
+	strcpy(list[i].lname,"\0");
 	
 	return list;
 }
