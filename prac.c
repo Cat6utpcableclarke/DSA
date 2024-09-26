@@ -21,7 +21,7 @@ typedef struct {
 	int max;
 }ProdDict;
 
-void convert (ProdDict *pd, Stack s);
+void convert (ProdDict *pd, Stack *s);
 void initDict(ProdDict *pd, int max);
 int getHash(ProdDict pd, int prodID, char prodName[]);
 bool add(ProdDict *pd, Product p);
@@ -53,20 +53,21 @@ int main(){
 	displayStack(s);
 	
 	
-	add(&pd,p1);
-	add(&pd,p2);
-	add(&pd,p3);
-	add(&pd,p4);
-	displayDick(pd);
+//	add(&pd,p1);
+//	add(&pd,p2);
+//	add(&pd,p3);
+//	add(&pd,p4);
+	
+	convert(&pd,&s);
 		
-		
+			displayDick(pd);
 }
 
-void convert (ProdDict *pd, Stack s){
+void convert (ProdDict *pd, Stack *s){
 	
-	while(!isEmpty(s)){
-		add(pd, s->prod);
-		s = s->link;
+	while(!isEmpty(*s)){
+		add(pd, (*s)->prod);
+		(*s) = (*s)->link;
 	}
 	
 }

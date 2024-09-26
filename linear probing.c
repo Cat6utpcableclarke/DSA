@@ -50,7 +50,9 @@ int main(){
 	insert(&ht,s4);
 	insert(&ht,s5);
 	insert(&ht,s6);
+	visualizetable(ht);
 	deletes(&ht,s1);
+	printf("\n\n\n");
 	visualizetable(ht);
 	
 }
@@ -108,7 +110,7 @@ void visualizetable(HashTable ht){
 		if(ht.elems[i].status == 0 || ht.elems[i].status == -1){
 			printf("----\n");
 		}else{
-			printf("%d ,hashvalue:%d \n",ht.elems[i].studID,getHash(ht.elems[i]));
+			printf("%d | %s | hashvalue:%d \n",ht.elems[i].studID,ht.elems[i].studName,getHash(ht.elems[i]));
 		}
 	}	
 	
