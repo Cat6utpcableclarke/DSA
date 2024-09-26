@@ -26,19 +26,39 @@ void initDict(ProdDict *pd, int max);
 int getHash(ProdDict pd, int prodID, char prodName[]);
 bool add(ProdDict *pd, Product p);
 bool removes(ProdDict *pd,Product p);
+void displayDick(ProdDict pd);
+Product get(int id,char prodName[], int idx);
 
 void initStack(Stack *s);
 bool isEmpty(Stack s);
 bool push(Stack *s, Product p);
 bool  pop(Stack *s);
 Product peek(Stack s);
+void displayStack(Stack s);
 int main(){
-	
-	Product p1 = {123,"cornedbeef",10,10.25};
 	Stack s;
 	initStack(&s);
-	push(&s,p1);
 	
+	ProdDict pd;
+	initDict(&pd,20);
+	Product p1 = {123,"cornedbeef",105,10.25};
+	Product p2 = {124,"Sinigang",11,10.25};
+	Product p3 = {125,"Neto",10,10.25};
+	Product p4 = {126,"Dragon",12,10.25};
+
+	push(&s,p1);
+	push(&s,p2);
+	push(&s,p3);
+	push(&s,p4);
+	displayStack(s);
+	
+	
+	add(&pd,p1);
+	add(&pd,p2);
+	add(&pd,p3);
+	add(&pd,p4);
+	displayDick(pd);
+		
 		
 }
 
@@ -50,10 +70,19 @@ void convert (ProdDict *pd, Stack s){
 	}
 	
 }
+
+Product get(int id,char prodName[], int idx){
+	
+	
+}
 void initDict(ProdDict *pd, int max){
+	int i;
 	pd->count =0;
 	pd->max = max;
 	pd->data = malloc(sizeof(NodeType) * max);
+	for(i=0; i<pd->max;++i){
+		pd->data[i] = NULL;
+	};
 }
 int getHash(ProdDict pd, int prodID, char prodName[]){
 	int sum =0;	
@@ -76,8 +105,6 @@ bool add(ProdDict *pd, Product p){
 			return true;
 		}
 	}
-	
-	
 	neww->link = (*temp);
 	(*temp) = neww;
 	pd->count++;
@@ -133,4 +160,32 @@ bool pop(Stack *s){
 }
 Product peek(Stack s){
 	return s->prod;
+}
+
+void displayStack(Stack s){
+	
+	while(s!= NULL){
+		printf("%d\n",s->prod.prodID);
+		s = s->link;
+	}
+}
+
+void displayDick(ProdDict pd){
+	int i;
+	
+	
+		
+		for(i=0; i<pd.max;i++){
+			printf("index %d:",i);
+			if(!pd.data[i]){
+				printf("--\n");
+			}else{
+				while(pd.data[i]){
+					printf("%d ",pd.data[i]->prod.prodID);
+					pd.data[i] = pd.data[i]->link;
+				}
+					printf("\n");
+			}
+		
+		}
 }
