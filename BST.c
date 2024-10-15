@@ -15,6 +15,7 @@ typedef struct node{
 }
 
 bool addNode(NodePtr*headref,int data){
+	
 	NodePtr temp = malloc(sizeof(NodeType));
 	if(temp==NULL){
 		return false;
@@ -32,7 +33,7 @@ bool addNode(NodePtr*headref,int data){
 }
 
 
-void display(NodePtr head){
+void display(NodePtr head){ //PreoRder
 	NodePtr trav;
 	trav =head;
 	if(trav!=NULL){
@@ -97,9 +98,12 @@ int main(){
 	addNode(&head,50);
 	addNode(&head,70);
 	
-//   display(head);
-    
-//   INORDER(head);
-//	postorder(head);
+	printf("PREORDER\n");
+    display(head);
+    printf("\nINORDER\n");
+    INORDER(head);
+	printf("\nPOSTORDER\n");
+	postorder(head);
+	printf("\nBFS\n");
 	bfs(head);
 }
