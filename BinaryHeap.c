@@ -15,7 +15,6 @@ void Insert(BinaryHeap *heap, int num){
 	heap->count++;
 	while(idx>0){
 		int parent = (idx-1)/2;
-		
 		if(heap->elems[idx] > heap->elems[parent]){
 			int temp = heap->elems[idx];
 			heap->elems[idx] = heap->elems[parent];
@@ -29,12 +28,7 @@ void Insert(BinaryHeap *heap, int num){
 }
 
 void Delete(BinaryHeap *heap) {
-    if (heap->count == 0) {
-        printf("Heap is empty.\n");
-        return;
-    }
     int temp = heap->elems[heap->count - 1];
-    heap->elems[heap->count - 1] = heap->elems[0];
     heap->elems[0] = temp;
     heap->count--;
     int parent = 0;
