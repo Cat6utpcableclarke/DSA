@@ -11,25 +11,25 @@ typedef struct {
 void Insert(BinaryHeap *heap, int num){
 	
 	int idx = heap->count;
-	heap->elems[idx] = num;
-	heap->count++;
+//	heap->elems[idx] = num;
+//	heap->count++;
 	while(idx>0){
 		int parent = (idx-1)/2;
-		if(heap->elems[idx] > heap->elems[parent]){
-			int temp = heap->elems[idx];
+		if(num > heap->elems[parent]){
 			heap->elems[idx] = heap->elems[parent];
-			heap->elems[parent] = temp;
 			idx = parent;
 		}else{
 			break;
 		}
 	}
+	heap->elems[idx] = num;
+	heap->count++;
 	return;	
 }
 
 void Delete(BinaryHeap *heap) {
-    int temp = heap->elems[heap->count - 1];
-    heap->elems[0] = temp;
+    int temp;
+    heap->elems[0] =heap->elems[heap->count - 1];
     heap->count--;
     int parent = 0;
     while (true) {
@@ -53,11 +53,12 @@ void Delete(BinaryHeap *heap) {
 
 
 void display(BinaryHeap heap){
-	printf("\n");
 	int i;
 	for( i=0; i< heap.count;i++){
 		printf("%d",heap.elems[i]);
+		
 	}
+	printf("\n");
 }
 
 

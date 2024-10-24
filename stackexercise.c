@@ -48,8 +48,10 @@ void main(){
 	push(&s,p3);	
 
 	displayStack(s);
+	displayStack(s);
+	displayStack(s);
 	
-	insertSorted1(&s,p1);
+//	insertSorted1(&s,p1);
 }
 
 void initStack(Stack *s){
@@ -103,10 +105,10 @@ Person peek(Stack s){
 
 /*Insert sorted base on lastname. Rember to use the property 
   of the stack using push, pop, and peek functions.*/
-bool insertSorted1(Stack *s, Person p) {
-	
-	strcmp(peek(*s).name,p.name);
-}
+//bool insertSorted1(Stack *s, Person p) {
+//	
+//	strcmp(peek(*s).name,p.name);
+//}
 
 
 ///*Insert sorted base on lastname. Rember to use the property 

@@ -16,7 +16,7 @@ typedef struct node{
 
 
 typedef struct {
-	NodePtr *data; //dynamic
+	NodePtr *data; 
 	int count;
 	int max;
 }ProdDict;
